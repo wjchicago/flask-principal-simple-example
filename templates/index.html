@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Principal</title>
+</head>
+<body>
+<div>
+    <h3>Navigator</h3>
+    <a href="{{ url_for('index') }}">Home</a>
+    {% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+    <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</div>
+<br>
+<div class="container">
+    <h3>Access Test Zone</h3>
+    <a href="{{ url_for('need_A')}}"> Need A</a>
+    <a href="{{ url_for('need_B')}}"> Need B</a>
+    <a href="{{ url_for('need_C')}}"> Need C</a>
+    <a href="{{ url_for('need_A_and_B')}}"> Need A AND B</a>
+    <a href="{{ url_for('need_A_or_B')}}"> Need A OR B</a>
+    <a href="{{ url_for('need_not_A')}}"> Need NOT A</a>
+</div>
+<br>
+<div class="container">
+    <h3>current_user</h3>
+    <p>Name: {{ current_user.username }}, Roles: {{ current_user.roles }} </p>
+</div>
+<div class="container">
+    <h4>User List</h4>
+    {% for user in users %}
+    <p>Name: {{ user.username }}, Roles: {{ user.roles }}  </p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
